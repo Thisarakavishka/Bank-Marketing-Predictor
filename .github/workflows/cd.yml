@@ -15,10 +15,7 @@ jobs:
         run: sudo docker pull thisarakavishka/bank-marketing-predictor:latest
 
       - name: Delete old Docker container
-        run: |
-          if [ "$(sudo docker ps -a -q -f name=bank-marketing-predictor)" ]; then
-            sudo docker rm -f bank-marketing-predictor
-          fi
+        run: sudo docker rm -f bank-marketing-predictor || true
 
       - name: Run Docker container
         run: sudo docker run -d -p 5000:5000 --name bank-marketing-predictor thisarakavishka/bank-marketing-predictor:latest
