@@ -21,8 +21,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             echo "✅ Pulling latest Docker image from DockerHub..."
-            docker stop bank-marketing-container || true
-            docker rm bank-marketing-container || true
+            docker stop bank-marketing-predictor || true
+            docker rm bank-marketing-predictor || true
             docker pull thisarakavishka/bank-marketing-predictor:latest
             echo "🚀 Starting new container..."
             docker run -d -p 5000:5000 --name bank-marketing-container thisarakavishka/bank-marketing-predictor:latest
