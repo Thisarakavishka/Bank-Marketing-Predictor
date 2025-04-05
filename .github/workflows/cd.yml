@@ -1,21 +1,28 @@
-name: CD Pipeline
+name: CD Pipeline - Deploy Flask App to AWS EC2
 
 on:
-  workflow_run:
-    workflows: ["CI Pipeline"]
-    types:
-      - completed
+  push:
+    branches:
+      - release
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Pull Docker image
-        run: sudo docker pull thisarakavishka/bank-marketing-predictor:latest
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Delete old Docker container
-        run: sudo docker rm -f bank-marketing-predictor || true
-
-      - name: Run Docker container
-        run: sudo docker run -d -p 5000:5000 --name bank-marketing-predictor thisarakavishka/bank-marketing-predictor:latest
+      - name: SSH into EC2 and Deploy Docker Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_PUBLIC_IP }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            echo "✅ Pulling latest Docker image from DockerHub..."
+            docker stop bank-marketing-container || true
+            docker rm bank-marketing-container || true
+            docker pull thisarakavishka/bank-marketing-predictor:latest
+            echo "🚀 Starting new container..."
+            docker run -d -p 5000:5000 --name bank-marketing-container thisarakavishka/bank-marketing-predictor:latest
