@@ -28,16 +28,16 @@ def predict():
             'contact': request.form.get('contact', 'cellular'),
             'month': request.form.get('month', 'may'),
             'day_of_week': request.form.get('day_of_week', 'mon'),
-            'duration': request.form.get('duration', '500'),
-            'campaign': request.form.get('campaign', '1'),
-            'pdays': request.form.get('pdays', '500'),
-            'previous': request.form.get('previous', '0'),
-            'poutcome': request.form.get('poutcome', 'nonexistent'),
-            'emp.var.rate': request.form.get('emp.var.rate', '1.1'),
-            'cons.price.idx': request.form.get('cons.price.idx', '93.994'),
-            'cons.conf.idx': request.form.get('cons.conf.idx', '-30.4'),
-            'euribor3m': request.form.get('euribor3m', '4.857'),
-            'nr.employed': request.form.get('nr.employed', '5191')
+            'duration': request.form.get('duration', '450'), 
+            'campaign': request.form.get('campaign', '3'), 
+            'pdays': request.form.get('pdays', '200'), 
+            'previous': request.form.get('previous', '1'),
+            'poutcome': request.form.get('poutcome', 'success'),
+            'emp.var.rate': request.form.get('emp.var.rate', '0.5'), 
+            'cons.price.idx': request.form.get('cons.price.idx', '94.0'),
+            'cons.conf.idx': request.form.get('cons.conf.idx', '-20.0'), 
+            'euribor3m': request.form.get('euribor3m', '4.9'),  
+            'nr.employed': request.form.get('nr.employed', '5200')
         }])
 
         # Print raw input data for debugging
