@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <h2>Prediction Result</h2>
-
-    {% if result.error %}
-    <p class="result failure">Error: {{ result.error }}</p>
-    {% else %}
-    <p class="result {% if result.prediction == 'YES' %}success{% else %}failure{% endif %}">
-        Prediction: {{ result.prediction }}
-    </p>
-    <p>Probability: {{ result.probability }}%</p>
-    {% endif %}
-
-    <a href="/">Go back</a>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Prediction Result</h1>
+                <p>Your bank marketing prediction results</p>
+            </div>
+            
+            <div class="result-container">
+                {% if result.error %}
+                <div class="result-box error">
+                    <div class="result-content">
+                        <h2>Error</h2>
+                        <p>{{ result.error }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="result-box {% if result.prediction == 'YES' %}success{% else %}neutral{% endif %}">
+                    <div class="result-content">
+                        <h2>Prediction: {{ result.prediction }}</h2>
+                        <p>Probability: <span class="probability">{{ result.probability }}%</span></p>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="result-details">
+                    <p>This prediction is based on the information you provided. Please note that this is a statistical model and actual results may vary.</p>
+                </div>
+                
+                <div class="form-footer">
+                    <a href="/" class="btn-back">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

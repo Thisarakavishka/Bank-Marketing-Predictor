@@ -4,66 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Marketing Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Bank Marketing Prediction Form</h2>
-    <form action="/predict" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Bank Marketing Prediction</h1>
+                <p>Fill out the form below to get your prediction</p>
+            </div>
+            
+            <form action="/predict" method="post" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
 
-        <label for="job">Job:</label>
-        <select id="job" name="job">
-            <option value="admin.">Administrative</option>
-            <option value="blue-collar">Blue Collar</option>
-            <option value="entrepreneur">Entrepreneur</option>
-            <option value="housemaid">Housemaid</option>
-            <option value="management">Management</option>
-            <option value="retired">Retired</option>
-            <option value="self-employed">Self-employed</option>
-            <option value="services">Services</option>
-            <option value="student">Student</option>
-            <option value="technician">Technician</option>
-            <option value="unemployed">Unemployed</option>
-        </select>
+                    <div class="form-group">
+                        <label for="job">Job</label>
+                        <select id="job" name="job">
+                            <option value="admin.">Administrative</option>
+                            <option value="blue-collar">Blue Collar</option>
+                            <option value="entrepreneur">Entrepreneur</option>
+                            <option value="housemaid">Housemaid</option>
+                            <option value="management">Management</option>
+                            <option value="retired">Retired</option>
+                            <option value="self-employed">Self-employed</option>
+                            <option value="services">Services</option>
+                            <option value="student">Student</option>
+                            <option value="technician">Technician</option>
+                            <option value="unemployed">Unemployed</option>
+                        </select>
+                    </div>
 
-        <label for="marital">Marital Status:</label>
-        <select id="marital" name="marital">
-            <option value="married">Married</option>
-            <option value="single">Single</option>
-            <option value="divorced">Divorced</option>
-        </select>
+                    <div class="form-group">
+                        <label for="marital">Marital Status</label>
+                        <select id="marital" name="marital">
+                            <option value="married">Married</option>
+                            <option value="single">Single</option>
+                            <option value="divorced">Divorced</option>
+                        </select>
+                    </div>
 
-        <label for="education">Education:</label>
-        <select id="education" name="education">
-            <option value="basic.4y">Basic (4 years)</option>
-            <option value="basic.6y">Basic (6 years)</option>
-            <option value="basic.9y">Basic (9 years)</option>
-            <option value="high.school">High School</option>
-            <option value="illiterate">Illiterate</option>
-            <option value="professional.course">Professional Course</option>
-            <option value="university.degree">University Degree</option>
-        </select>
+                    <div class="form-group">
+                        <label for="education">Education</label>
+                        <select id="education" name="education">
+                            <option value="basic.4y">Basic (4 years)</option>
+                            <option value="basic.6y">Basic (6 years)</option>
+                            <option value="basic.9y">Basic (9 years)</option>
+                            <option value="high.school">High School</option>
+                            <option value="illiterate">Illiterate</option>
+                            <option value="professional.course">Professional Course</option>
+                            <option value="university.degree">University Degree</option>
+                        </select>
+                    </div>
 
-        <label for="default">Default:</label>
-        <select id="default" name="default">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
+                    <div class="form-group">
+                        <label for="default">Default</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="default-no" name="default" value="no" checked>
+                                <label for="default-no">No</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="default-yes" name="default" value="yes">
+                                <label for="default-yes">Yes</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="housing">Housing Loan:</label>
-        <select id="housing" name="housing">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
+                    <div class="form-group">
+                        <label for="housing">Housing Loan</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="housing-no" name="housing" value="no" checked>
+                                <label for="housing-no">No</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="housing-yes" name="housing" value="yes">
+                                <label for="housing-yes">Yes</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <label for="loan">Personal Loan:</label>
-        <select id="loan" name="loan">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
+                    <div class="form-group">
+                        <label for="loan">Personal Loan</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="loan-no" name="loan" value="no" checked>
+                                <label for="loan-no">No</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="loan-yes" name="loan" value="yes">
+                                <label for="loan-yes">Yes</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <button type="submit">Predict</button>
-    </form>
+                <div class="form-footer">
+                    <button type="submit" class="btn-predict">Get Prediction</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
